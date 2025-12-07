@@ -39,7 +39,7 @@ jobs:
       with:
         context: . # Путь к Dockerfile
         push: true
-      tags: ${{ secrets.DOCKERHUB_USERNAME }}/sii_front:latest # ВАШ ОБРАЗ!
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/sii_front:latest # ВАШ ОБРАЗ!
   deploy-to-vm:
     needs: docker-build-push # Запускать после docker-build-push
     runs-on: ubuntu-latest
