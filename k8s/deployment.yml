@@ -16,6 +16,6 @@ spec:
       spec:
         containers:
         - name: sii-front
-          image: gastorbaiter34/sii_front:latest
+          image: gastorbaiter34/app:latest
           ports:
           - containerPort: 80 # Порт вашего приложения в контейнере
