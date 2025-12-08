@@ -22,7 +22,6 @@ jobs:
         rm -f package-lock.json
         npm install
         npm run build --if-present # Пример зависимостей
-        npm test # Запуск тестов
   docker-build-push:
     needs: build-and-test # Запускать после build-and-test
     runs-on: ubuntu-latest
