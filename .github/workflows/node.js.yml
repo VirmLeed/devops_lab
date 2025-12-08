@@ -58,7 +58,7 @@ jobs:
         SSH_HOST: arsine.ru
         SSH_USER: zen
       run: |
-        ssh ${{ SSH_USER }}@${{ env.SSH_HOST }}
+        ssh ${{ env.SSH_USER }}@${{ env.SSH_HOST }}
         docker stop sii_front || true && # Остановить старый контейнер, если есть
         docker rm sii_front || true && # Удалить старый контейнер
         docker pull ${{ secrets.DOCKERHUB_USERNAME }}/sii_front:latest && # Скачать новый образ
