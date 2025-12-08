@@ -18,7 +18,9 @@ jobs:
         cache: 'npm'
     - name: Install dependencies and test
       run: |
-        npm ci
+        rm -rf node_modules
+        rm -f package-lock.json
+        npm install
         npm run build --if-present # Пример зависимостей
         npm test # Запуск тестов
   docker-build-push:
