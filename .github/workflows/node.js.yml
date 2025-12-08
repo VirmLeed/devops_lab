@@ -63,3 +63,21 @@ jobs:
         docker rm sii_front || true && # Удалить старый контейнер
         docker pull ${{ secrets.DOCKERHUB_USERNAME }}/sii_front:latest && # Скачать новый образ
         docker run -d -p 8081:80 --name sii_front ${{ secrets.DOCKERHUB_USERNAME }}/sii_front:latest # Запустить новый контейнер
+
+  update-k8s-image:
+    needs: docker-build-push
+    runs-on: ubunty-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with: 
+        fetch-depth: 0
+        persist-credentials: true
+    - name: Update k8s image file
+      env:
+        IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/sii_front:latest
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        ./k8s/update_k8s_image.sh "${IMAGE_NAME}" || true
