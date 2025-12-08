@@ -75,6 +75,8 @@ jobs:
       with: 
         fetch-depth: 0
         persist-credentials: true
+    - name: Make script executable
+      run: chmod +x k8s/update_k8s_image.sh
     - name: Update k8s image file
       env:
         IMAGE_NAME: ${{ secrets.DOCKERHUB_USERNAME }}/sii_front:latest
