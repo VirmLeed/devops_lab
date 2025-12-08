@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: sii-front-deployment
+    labels:
+      app: sii-front
+spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: sii-front
+    template:
+      metadata:
+        labels:
+          app: sii-front
+      spec:
+        containers:
+        - name: sii-front
+          image: gastorbaiter34/sii_front:latest
+          ports:
+          - containerPort: 80 # Порт вашего приложения в контейнере
